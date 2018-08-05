@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pictgram</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>" role="alert"><%= value %>
+      </div>
+      <% end %>
+      <nuv class="nuvbar nuvbar-default nuvbar-fixed-top nuvbar-transparent">
+          <div class="container">
+              <%= link_to root_path do %>
+              <span><%= image_tag "icon/logo.png", class: "nuvbar-brand" %></span>
+              <% end %>
+              <ul class="nuv nuvber-nuv nuvber-right">
+                  <% if logged_in? %>
+                  <li>
+                      <%= link_to "#" do %>
+                      <%= image_tag "icons/heart.png" %>
+                      <% end %>
+                  </li>
+                  <li>
+                      <%= link_to "#" do %>
+                      <%= image_tag "icons/camera.png" %>
+                      <% end %>
+                  </li>
+                  <li>
+                      <%= link_to logout_path, method: :delete do %>
+                      <%= image_tag "icons/logout.png" %>
+                      <% end %>
+                 </li>
+                 <li>
+                     <%= link_to login_path do %>
+                     <%= image_tag "icons/login.png" %>
+                     <% end %>
+                 </li>
+                 <% end %>
+             </ul>
+          </div>
+      </nuv>
+
+    <%= yield %>
+
+    <script>
+        $(function(){
+            $(".alert").fadeout(5000);
+        });
+    </script>
+  </body>
+</html>
+{name: "test",email: ""}
